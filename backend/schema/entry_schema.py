@@ -12,7 +12,6 @@ class EntryCreate(EntryBase):
 
 class EntryRead(EntryBase):
     id: int
-    progress_id: int
 
     class Config:
         from_attributes = True  # Allows SQLAlchemy models to be returned as Pydantic objects
