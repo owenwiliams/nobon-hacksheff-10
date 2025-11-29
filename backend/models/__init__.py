@@ -3,6 +3,7 @@ from .journey import Journey
 from .quest import Quest
 from .entry import Entry
 from .athena import Athena
+from .task import Task
 
 __all__ = [
     "Progress",
@@ -10,4 +11,5 @@ __all__ = [
     "Quest",
     "Entry",
     "Athena",
+    "Task",
 ]
