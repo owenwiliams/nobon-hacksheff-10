@@ -41,7 +41,7 @@ def update_entry(db: Session, entry_id: int, entry_in: schema.EntryUpdate) -> Op
     if "progress_id" in update_data:
         progress = db.query(models.Progress).filter(models.Progress.id == update_data["progress_id"]).first()
         if progress is None:
-            raise ValueError(f"Progress id {update_data['progress_id']} not found")
+            raise HTTPException(status_code=404, detail=f"Progress id {update_data['progress_id']} not found")
 
     for key, value in update_data.items():
         setattr(db_entry, key, value)
