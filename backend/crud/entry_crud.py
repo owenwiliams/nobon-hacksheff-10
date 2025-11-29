@@ -16,14 +16,14 @@ def create_entry(db: Session, entry_in: schema.EntryCreate) -> models.Entry:
     return db_entry
 
 # use models.Entry | None: if doesnt work???
-def get_entry(db: Session, entry_id: int) -> Optional(models.Entry):
+def get_entry(db: Session, entry_id: int) -> Optional[models.Entry]:
     return db.query(models.Entry).filter(models.Entry.id == entry_id).first()
 
 def get_all_entries(db: Session, skip: int = 0, limit: int = 100) -> List[models.Entry]:
     return db.query(models.Entry).offset(skip).limit(limit).all()
 
 # update based on id
-def update_entry(db: Session, entry_id: int, entry_in: schema.EntryUpdate) -> Optional(models.Entry):
+def update_entry(db: Session, entry_id: int, entry_in: schema.EntryUpdate) -> Optional[models.Entry]:
     db_entry = db.query(models.Entry).filter(models.Entry.id == entry_id).first()
     if not db_entry:
         return None
@@ -38,7 +38,7 @@ def update_entry(db: Session, entry_id: int, entry_in: schema.EntryUpdate) -> Op
     return db_entry
 
 # delete based on id
-def delete_entry(db: Session, entry_id: int) -> Optional(models.Entry]:
+def delete_entry(db: Session, entry_id: int) -> Optional[models.Entry]:
     db_entry = db.query(models.Entry).filter(models.Entry.id == entry_id).first()
     if not db_entry:
         return None
