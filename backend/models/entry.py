@@ -11,7 +11,7 @@ class Entry(Base):
     entry_date = Column(Date, index=True)
 
     progress_id = Column(Integer, ForeignKey("progress.id"))
-    progress = relationship("Progress", back_populates="entry")
+    progress = relationship("Progress", back_populates="entries")
 
     def __repr__(self):
         return f"<Entry(id={self.id}, title='{self.title}', body='{self.body}', entry_date={self.entry_date}, progress_id={self.progress_id})>"

@@ -11,7 +11,7 @@ class Athena(Base):
     date = Column(Date, index=True)
 
     progress_id = Column(Integer, ForeignKey("progress.id"))
-    progress = relationship("Progress", back_populates="athena")
+    progress = relationship("Progress", back_populates="athenas")
 
     def __repr__(self):
         return f"<Athena(id={self.id}, request='{self.request}', response='{self.response}', date={self.date}, progress_id={self.progress_id})>"

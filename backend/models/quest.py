@@ -10,7 +10,7 @@ class Quest(Base):
     date_completed = Column(Date, index=True)
     due_date = Column(Date, index=True)
 
-    tasks = relationship("Task", back_populates="quest")
+    tasks = relationship("Task", back_populates="quests")
 
     journey_id = Column(Integer, ForeignKey("journey.id"))
     journey = relationship("Journey", back_populates="quests")

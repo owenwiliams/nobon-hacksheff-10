@@ -13,7 +13,7 @@ class Journey(Base):
     progress_id = Column(Integer, ForeignKey("progress.id"))
     progress = relationship("Progress", back_populates="journeys")
 
-    quests = relationship("Quest", back_populates="journey")
+    quests = relationship("Quest", back_populates="journeys")
 
     def __repr__(self):
         return f"<Journey(id={self.id}, title='{self.title}', start_date={self.start_date}, end_date={self.end_date}, progress_id={self.progress_id})>"

@@ -15,7 +15,7 @@ class EntryRead(EntryBase):
     progress_id: int
 
     class Config:
-        orm_mode = True  # Allows SQLAlchemy models to be returned as Pydantic objects
+        from_attributes = True  # Allows SQLAlchemy models to be returned as Pydantic objects
 
 class EntryUpdate(BaseModel):
     title: Optional[str] = None
