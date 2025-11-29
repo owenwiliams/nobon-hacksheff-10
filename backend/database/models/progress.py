@@ -12,3 +12,6 @@ class Progress(Base):
     entry = relationship("Entry", back_populates="progress")
 
     athena = relationship("Athena", back_populates="progress")
+
+    def __repr__(self):
+        return f"<Progress(id={self.id}, journey_id={self.journey.id if self.journey else None}, entry_id={self.entry.id if self.entry else None}, athena_id={self.athena.id if self.athena else None})>"
