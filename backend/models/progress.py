@@ -5,9 +5,9 @@ from backend.database.db import Base
 class Progress(Base):
     __tablename__ = "progress"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
 
-    journeys = relationship("Journey", back_populates="progress", autoincrement=True)
+    journeys = relationship("Journey", back_populates="progress")
 
     entries = relationship("Entry", back_populates="progress")
 
