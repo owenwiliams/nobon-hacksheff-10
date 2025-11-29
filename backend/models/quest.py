@@ -5,7 +5,7 @@ from backend.database.db import Base
 class Quest(Base):
     __tablename__ = "quests"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     date_created = Column(Date, index=True)
     date_completed = Column(Date, index=True)
     due_date = Column(Date, index=True)

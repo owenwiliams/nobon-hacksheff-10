@@ -7,7 +7,7 @@ class Progress(Base):
 
     id = Column(Integer, primary_key=True, index=True)
 
-    journeys = relationship("Journey", back_populates="progress")
+    journeys = relationship("Journey", back_populates="progress", autoincrement=True)
 
     entries = relationship("Entry", back_populates="progress")
 

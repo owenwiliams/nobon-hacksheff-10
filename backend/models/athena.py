@@ -5,7 +5,7 @@ from backend.database.db import Base
 class Athena(Base):
     __tablename__ = "athena"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     request = Column(String, index=True)
     response = Column(String, index=True)
     date = Column(Date, index=True)

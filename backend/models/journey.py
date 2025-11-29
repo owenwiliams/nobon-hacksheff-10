@@ -5,7 +5,7 @@ from backend.database.db import Base
 class Journey(Base):
     __tablename__ = "journey"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     title = Column(String, index=True)
     start_date = Column(Date, index=True)
     end_date = Column(Date, index=True)

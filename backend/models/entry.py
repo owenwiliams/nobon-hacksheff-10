@@ -5,7 +5,7 @@ from backend.database.db import Base
 class Entry(Base):
     __tablename__ = "entry"
 
-    id = Column(Integer, primary_key=True, index=True)
+    id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     title = Column(String, index=True)
     body = Column(String, index=True)
     entry_date = Column(Date, index=True)
