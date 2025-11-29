@@ -1,6 +1,6 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Date
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
 from sqlalchemy.orm import relationship
-from backend.db import Base
+from db import Base
 
 class Journey(Base):
     __tablename__ = "journey"
@@ -10,7 +10,7 @@ class Journey(Base):
     start_date = Column(Date, index=True)
     end_date = Column(Date, index=True)
 
-    quests = relationship("Quest", back_populates="journeys")
+    quests = relationship("Quest", back_populates="journey")
 
 class Quest(Base):
     __tablename__ = "quest"
@@ -21,7 +21,7 @@ class Quest(Base):
     due_date = Column(Date, index=True)
     end_date = Column(Date, index=True)
 
-    tasks = relationship("Task", back_populates="quests")
+    tasks = relationship("Task", back_populates="quest")
 
     journey_id = Column(Integer, ForeignKey("journey.id"))
     journey = relationship("Journey", back_populates="quests")

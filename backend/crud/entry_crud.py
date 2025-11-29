@@ -1,11 +1,11 @@
-import backend.schema.journey_schema as schema
-import backend.models as models
-import sqlalchemy.orm as Session
+from schema import entry_schema as schema
+from models import Entry
+from sqlalchemy.orm import Session
 from typing import Optional, List
 
 # create a new entry
-def create_entry(db: Session, entry_in: schema.EntryCreate) -> models.Entry:
-    db_entry = models.Entry(
+def create_entry(db: Session, entry_in: schema.EntryCreate) -> Entry:
+    db_entry = Entry(
         title=entry_in.title,
         body=entry_in.body,
         entry_date=entry_in.entry_date
@@ -16,15 +16,15 @@ def create_entry(db: Session, entry_in: schema.EntryCreate) -> models.Entry:
     return db_entry
 
 # use models.Entry | None: if doesnt work???
-def get_entry(db: Session, entry_id: int) -> Optional[models.Entry]:
-    return db.query(models.Entry).filter(models.Entry.id == entry_id).first()
+def get_entry(db: Session, entry_id: int) -> Optional[Entry]:
+    return db.query(Entry).filter(Entry.id == entry_id).first()
 
-def get_all_entries(db: Session, skip: int = 0, limit: int = 100) -> List[models.Entry]:
-    return db.query(models.Entry).offset(skip).limit(limit).all()
+def get_all_entries(db: Session, skip: int = 0, limit: int = 100) -> List[Entry]:
+    return db.query(Entry).offset(skip).limit(limit).all()
 
 # update based on id
-def update_entry(db: Session, entry_id: int, entry_in: schema.EntryUpdate) -> Optional[models.Entry]:
-    db_entry = db.query(models.Entry).filter(models.Entry.id == entry_id).first()
+def update_entry(db: Session, entry_id: int, entry_in: schema.EntryUpdate) -> Optional[Entry]:
+    db_entry = db.query(Entry).filter(Entry.id == entry_id).first()
     if not db_entry:
         return None
     if entry_in.title is not None:
@@ -38,8 +38,8 @@ def update_entry(db: Session, entry_id: int, entry_in: schema.EntryUpdate) -> Op
     return db_entry
 
 # delete based on id
-def delete_entry(db: Session, entry_id: int) -> Optional[models.Entry]:
-    db_entry = db.query(models.Entry).filter(models.Entry.id == entry_id).first()
+def delete_entry(db: Session, entry_id: int) -> Optional[Entry]:
+    db_entry = db.query(Entry).filter(Entry.id == entry_id).first()
     if not db_entry:
         return None
     db.delete(db_entry)
