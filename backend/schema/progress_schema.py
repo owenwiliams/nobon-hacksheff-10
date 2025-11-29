@@ -20,5 +20,5 @@ class ProgressRead(BaseModel):
 
 class ProgressUpdate(BaseModel):
     journeys: Optional[List[int]] = None
-    entries: Optional[List[int]] = Nonej
+    entries: Optional[List[int]] = None
     athenas: Optional[List[int]] = None

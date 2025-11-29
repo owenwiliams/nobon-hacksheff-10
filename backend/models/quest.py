@@ -16,4 +16,4 @@ class Quest(Base):
     journey = relationship("Journey", back_populates="quests")
 
     def __repr__(self):
-        return f"<Quest(id={self.id}, date_created={self.date_created}, date_completed={self.date_completed}, due_date={self.due_date}, journey_id={self.journey_id})>"
+        return f"<Quest(id={self.id}, title='{self.title}', date_created={self.date_created}, date_completed={self.date_completed}, due_date={self.due_date}, journey_id={self.journey_id})>"
