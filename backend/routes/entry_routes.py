@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from backend.schema.entry_schema import EntryCreate, EntryRead, EntryUpdate
-from backend.db import get_db
-from backend.crud.entry_crud import create_entry, get_entry, get_all_entries, update_entry, delete_entry
+from schema.entry_schema import EntryCreate, EntryRead, EntryUpdate
+from db import get_db
+from crud.entry_crud import create_entry, get_entry, get_all_entries, update_entry, delete_entry
 from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/entries", tags=["entries"])

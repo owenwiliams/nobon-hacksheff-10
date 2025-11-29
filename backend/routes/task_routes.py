@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from backend.schema.task_schema import TaskCreate, TaskRead, TaskUpdate
-from backend.db import get_db
-from backend.crud.task_crud import create_task, get_task, get_all_tasks, update_task, delete_task
+from schema.task_schema import TaskCreate, TaskRead, TaskUpdate
+from db import get_db
+from crud.task_crud import create_task, get_task, get_all_tasks, update_task, delete_task
 from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/tasks", tags=["tasks"])

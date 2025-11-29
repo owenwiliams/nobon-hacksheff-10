@@ -1,10 +1,10 @@
-from schema import entry_schema as schema
+from schema.entry_schema import EntryCreate, EntryUpdate
 from models import Entry
 from sqlalchemy.orm import Session
 from typing import Optional, List
 
 # create a new entry
-def create_entry(db: Session, entry_in: schema.EntryCreate) -> Entry:
+def create_entry(db: Session, entry_in: EntryCreate) -> Entry:
     db_entry = Entry(
         title=entry_in.title,
         body=entry_in.body,
@@ -23,7 +23,7 @@ def get_all_entries(db: Session, skip: int = 0, limit: int = 100) -> List[Entry]
     return db.query(Entry).offset(skip).limit(limit).all()
 
 # update based on id
-def update_entry(db: Session, entry_id: int, entry_in: schema.EntryUpdate) -> Optional[Entry]:
+def update_entry(db: Session, entry_id: int, entry_in: EntryUpdate) -> Optional[Entry]:
     db_entry = db.query(Entry).filter(Entry.id == entry_id).first()
     if not db_entry:
         return None

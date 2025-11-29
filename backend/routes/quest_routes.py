@@ -1,8 +1,8 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
-from backend.schema.quest_schema import QuestCreate, QuestRead, QuestUpdate
-from backend.db import get_db
-from backend.crud.quest_crud import create_quest, get_quest, get_all_quests, update_quest, delete_quest
+from schema.quest_schema import QuestCreate, QuestRead, QuestUpdate
+from db import get_db
+from crud.quest_crud import create_quest, get_quest, get_all_quests, update_quest, delete_quest
 from sqlalchemy.orm import Session
     
 router = APIRouter(prefix="/quests", tags=["quests"])

@@ -1,22 +1,23 @@
 from typing import List, Optional
 from sqlalchemy.orm import Session
-from backend import models, schema
+from models import Quest
+from schema.quest_schema import QuestCreate, QuestUpdate
 
-def create_quest(db: Session, quest_in: schema.QuestCreate) -> models.Quest:
-    db_quest = models.Quest(**quest_in.dict())
+def create_quest(db: Session, quest_in: QuestCreate) -> Quest:
+    db_quest = Quest(**quest_in.model_dump())
     db.add(db_quest)
     db.commit()
     db.refresh(db_quest)
     return db_quest
 
-def get_quest(db: Session, quest_id: int) -> Optional[models.Quest]:
-    return db.query(models.Quest).filter(models.Quest.id == quest_id).first()
+def get_quest(db: Session, quest_id: int) -> Optional[Quest]:
+    return db.query(Quest).filter(Quest.id == quest_id).first()
 
-def get_all_quests(db: Session, skip: int = 0, limit: int = 100) -> List[models.Quest]:
-    return db.query(models.Quest).offset(skip).limit(limit).all()
+def get_all_quests(db: Session, skip: int = 0, limit: int = 100) -> List[Quest]:
+    return db.query(Quest).offset(skip).limit(limit).all()
 
-def update_quest(db: Session, quest_id: int, quest_in: schema.QuestUpdate) -> Optional[models.Quest]:
-    db_quest = db.query(models.Quest).filter(models.Quest.id == quest_id).first()
+def update_quest(db: Session, quest_id: int, quest_in: QuestUpdate) -> Optional[Quest]:
+    db_quest = db.query(Quest).filter(Quest.id == quest_id).first()
     if db_quest is None:
         return None
     update_data = quest_in.model_dump(exclude_unset=True)
@@ -27,8 +28,8 @@ def update_quest(db: Session, quest_id: int, quest_in: schema.QuestUpdate) -> Op
     db.refresh(db_quest)
     return db_quest
 
-def delete_quest(db: Session, quest_id: int) -> Optional[models.Quest]:
-    db_quest = db.query(models.Quest).filter(models.Quest.id == quest_id).first()
+def delete_quest(db: Session, quest_id: int) -> Optional[Quest]:
+    db_quest = db.query(Quest).filter(Quest.id == quest_id).first()
     if db_quest is None:
         return None
     db.delete(db_quest)
