@@ -1,10 +1,10 @@
 from typing import List, Optional
 from sqlalchemy.orm import Session
 from models import Journey
-from schema.journey_schema import JourneyCreate, JourneyUpdate
+from schema import journey_schema as schema
 
-def create_journey(db: Session, journey_in: JourneyCreate) -> Journey:
-    db_journey = Journey(**journey_in.model_dump())
+def create_journey(db: Session, journey_in: schema.JourneyCreate) -> Journey:
+    db_journey = Journey(**journey_in.dict())
     db.add(db_journey)
     db.commit()
     db.refresh(db_journey)
@@ -13,10 +13,10 @@ def create_journey(db: Session, journey_in: JourneyCreate) -> Journey:
 def get_journey(db: Session, journey_id: int) -> Optional[Journey]:
     return db.query(Journey).filter(Journey.id == journey_id).first()
 
-def get_journeys(db: Session, skip: int = 0, limit: int = 100) -> List[Journey]:
+def get_all_journeys(db: Session, skip: int = 0, limit: int = 100) -> List[Journey]:
     return db.query(Journey).offset(skip).limit(limit).all()
 
-def update_journey(db: Session, journey_id: int, journey_in: JourneyUpdate) -> Optional[Journey]:
+def update_journey(db: Session, journey_id: int, journey_in: schema.JourneyUpdate) -> Optional[Journey]:
     db_journey = db.query(Journey).filter(Journey.id == journey_id).first()
     if db_journey is None:
         return None
