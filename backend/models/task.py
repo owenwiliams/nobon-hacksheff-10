@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, ForeignKey, Date
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey, Date
 from sqlalchemy.orm import relationship
 from backend.database.db import Base
 
@@ -7,7 +7,7 @@ class Task(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     body = Column(String, index=True)
-    complete = Column(String, index=True)
+    complete = Column(Boolean, index=True)
 
     quest_id = Column(Integer, ForeignKey("quests.id"))
     quest = relationship("Quest", back_populates="tasks")
