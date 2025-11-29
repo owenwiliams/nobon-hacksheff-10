@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from backend.routes import router as entry_router
+from backend.routes import entry_routes as entry_router
 
 app = FastAPI()
 app.include_router(entry_router)
