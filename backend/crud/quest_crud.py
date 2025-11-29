@@ -12,7 +12,7 @@ def create_quest(db: Session, quest_in: schema.QuestCreate) -> models.Quest:
 def get_quest(db: Session, quest_id: int) -> Optional[models.Quest]:
     return db.query(models.Quest).filter(models.Quest.id == quest_id).first()
 
-def get_quests(db: Session, skip: int = 0, limit: int = 100) -> List[models.Quest]:
+def get_all_quests(db: Session, skip: int = 0, limit: int = 100) -> List[models.Quest]:
     return db.query(models.Quest).offset(skip).limit(limit).all()
 
 def update_quest(db: Session, quest_id: int, quest_in: schema.QuestUpdate) -> Optional[models.Quest]:

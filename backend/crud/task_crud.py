@@ -12,7 +12,7 @@ def create_task(db: Session, task_in: schema.TaskCreate) -> models.Task:
 def get_task(db: Session, task_id: int) -> Optional[models.Task]:
     return db.query(models.Task).filter(models.Task.id == task_id).first()
 
-def get_tasks(db: Session, skip: int = 0, limit: int = 100) -> List[models.Task]:
+def get_all_tasks(db: Session, skip: int = 0, limit: int = 100) -> List[models.Task]:
     return db.query(models.Task).offset(skip).limit(limit).all()
 
 def update_task(db: Session, task_id: int, task_in: schema.TaskUpdate) -> Optional[models.Task]:
