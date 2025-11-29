@@ -11,7 +11,7 @@ class Journey(Base):
     end_date = Column(Date, index=True)
 
     quests = relationship("Quest", back_populates="journeys")
-    
+
 class Quest(Base):
     __tablename__ = "quest"
 
@@ -31,7 +31,7 @@ class Task(Base):
 
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     body = Column(String, index=True)
-    is_completed = Column(Integer, index=True)
+    is_completed = Column(Boolean, index=True)
 
     quest_id = Column(Integer, ForeignKey("quest.id"))
     quest = relationship("Quest", back_populates="tasks")
