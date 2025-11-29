@@ -14,9 +14,6 @@ class JourneyCreate(JourneyBase):
 
 class JourneyRead(JourneyBase):
     id: int
-    title: str
-    start_date: date
-    end_date: Optional[datetime] = None
     progress_id: int
     quests: List[QuestBase] = []
 
@@ -25,7 +22,7 @@ class JourneyRead(JourneyBase):
 
 class JourneyUpdate(BaseModel):
     title: Optional[str] = None
-    start_date: Optional[str] = None
-    end_date: Optional[str] = None
+    start_date: Optional[date] = None
+    end_date: Optional[datetime] = None
     progress_id: Optional[int] = None
     quests: Optional[List[int]] = None

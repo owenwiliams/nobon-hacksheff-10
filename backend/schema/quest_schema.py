@@ -15,10 +15,7 @@ class QuestCreate(QuestBase):
 
 class QuestRead(QuestBase):
     id: int
-    title: str
-    date_created: datetime
-    date_completed: Optional[datetime] = None
-    due_date: Optional[date] = None
+    journey_id: int
     tasks: List[TaskBase] = []
 
     class Config:
