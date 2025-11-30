@@ -6,6 +6,19 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { athenaChat } from '../services/geminiApi';
+import '../styles/Title.css';
+
+function AthenaTitle()
+{
+  return (
+    <div>
+        <div class="titleContainer">
+            <p class="athenaTitle">ATHENA</p>
+        </div>
+        <div class = "titleBanner"></div>
+    </div>
+  );
+}
 
 function Athena() {
   const [messages, setMessages] = useState([
@@ -84,8 +97,8 @@ function Athena() {
 
   return (
     <div>
+      <AthenaTitle />
       <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 2 }}>
-        <h1>Athena Chatbot</h1>
         <Button variant="outlined" size="small" onClick={downloadConversation}>
           Download Conversation
         </Button>
