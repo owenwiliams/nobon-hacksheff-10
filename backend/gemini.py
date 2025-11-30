@@ -11,8 +11,15 @@
 import os 
 from google import genai
 from google.genai import types
+from typing import List
+from dotenv import load_dotenv
 
-os.environ["GEMINI_API_KEY"] = "AIzaSyDe59KBKLkEWtj1UMV6cp9TPAI1oefTEuE"
+# load the api key from .env - private file to be shared
+load_dotenv()  
+GEMINI_API_KEY = os.getenv('GEMINI_API_KEY')
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY not found in environment variables")
+
 # the client gets the API key from GEMINI_API_KEY environment variable
 client = genai.Client()
 
@@ -27,8 +34,8 @@ def summarize_journal_to_title(journal_body: str) -> str:
     return ask_gemini(instruction, prompt)
 
 # based on the journey's title and description, suggest a few possible quests
-def suggest_possible_quest_milestones(journey_title: str) -> str:
-    instruction = "Based on the following task title and description, suggest 3 possible sub-tasks to help the user complete this task. Return the sub-tasks as a string, with each sub-task separated by the character |."
+def suggest_possible_quest_milestones(journey_title: str) -> List:
+    instruction = "Based on the following task title and description, suggest 1 possible sub-task to help the user complete this task. Return the sub-task as a string, do not include any other text or formatting. This should be a single sentance, up to 30 words."
     prompt = f"Journey Title: {journey_title}"
     return ask_gemini(instruction, prompt)
 
@@ -51,7 +58,7 @@ def motivational_quote() -> str:
 # this is a generic function that can be used for various purposes
 def ask_gemini(instruction: str, prompt: str) -> str:
     response = client.models.generate_content(
-    model="gemini-2.5-pro",
+    model="gemini-2.5-flash",
     config=types.GenerateContentConfig(
         system_instruction=instruction),
     contents=prompt
@@ -62,7 +69,7 @@ def ask_gemini(instruction: str, prompt: str) -> str:
 # this is used specifically for the Athena chatbot, and will provide responses as Athena
 def ask_athena(instruction: str, prompt: str) -> str:
     response = client.models.generate_content(
-    model="gemini-2.5-pro",
+    model="gemini-2.5-flash",
     config=types.GenerateContentConfig(
         system_instruction= instruction),
     contents=prompt

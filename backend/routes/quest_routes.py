@@ -6,6 +6,7 @@ from db import get_db
 from crud.quest_crud import create_quest, get_quest, get_all_quests, update_quest, delete_quest, get_active_quests, get_quests_by_end_date
 from crud.task_crud import get_tasks_by_quest
 from sqlalchemy.orm import Session
+from datetime import date
     
 router = APIRouter(prefix="/quests", tags=["quests"])
 
