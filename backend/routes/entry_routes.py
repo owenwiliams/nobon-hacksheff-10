@@ -36,7 +36,7 @@ async def update_existing_entry(entry_id: int, entry_in: EntryUpdate, db: Sessio
     return EntryRead.model_validate(entry)
 
 # delete
-@router.delete("/{entry_id}", response_model=EntryRead)
+@router.delete("/{entry_id}")
 def delete_existing_entry(entry_id: int, db: Session = Depends(get_db)):
     entry = delete_entry(db, entry_id)
     if not entry:
