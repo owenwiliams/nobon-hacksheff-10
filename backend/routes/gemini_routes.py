@@ -30,8 +30,8 @@ async def suggest_quest(journey_title: ChatRequest):
     return results
 
 @router.post("/athena_chat", response_model=str)
-async def athena_chat(prompt: ChatRequest): 
-    response = athena_chatbot(prompt.prompt)
+async def athena_chat(request: ChatRequest): 
+    response = athena_chatbot(request.prompt)
     return response
 
 @router.get("/motivational_quote", response_model=str)
