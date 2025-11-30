@@ -1,10 +1,11 @@
 from typing import List, Optional
+from datetime import date
 from sqlalchemy.orm import Session
 from models import Journey
 from schema import journey_schema as schema
 
 def create_journey(db: Session, journey_in: schema.JourneyCreate) -> Journey:
-    db_journey = Journey(**journey_in.dict())
+    db_journey = Journey(**journey_in.model_dump())
     db.add(db_journey)
     db.commit()
     db.refresh(db_journey)
@@ -15,6 +16,12 @@ def get_journey(db: Session, journey_id: int) -> Optional[Journey]:
 
 def get_all_journeys(db: Session, skip: int = 0, limit: int = 100) -> List[Journey]:
     return db.query(Journey).offset(skip).limit(limit).all()
+
+def get_journeys_by_end_date(db: Session, end_date: date) -> List[Journey]:
+    return db.query(Journey).filter(Journey.end_date == end_date).all()
+
+def get_active_journeys(db: Session) -> List[Journey]:
+    return db.query(Journey).filter(Journey.end_date.is_(None)).all()
 
 def update_journey(db: Session, journey_id: int, journey_in: schema.JourneyUpdate) -> Optional[Journey]:
     db_journey = db.query(Journey).filter(Journey.id == journey_id).first()
