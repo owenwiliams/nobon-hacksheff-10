@@ -7,10 +7,10 @@ function DisplayGreeting() {
   let greetingMessage = '';
 
   if (currentHour >= 5 && currentHour < 12) {
-    greetingMessage = "Good morning,";
+    greetingMessage = "GOOD MORNING,";
   }
   else if (currentHour >= 12 && currentHour < 18) {
-    greetingMessage = "GOOD,";
+    greetingMessage = "GOOD AFTERNOON,";
   }
   else if (currentHour >= 18 && currentHour < 22) {
     greetingMessage = "GOOD EVENING,";

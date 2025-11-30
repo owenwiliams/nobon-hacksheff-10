@@ -40,22 +40,6 @@
   margin-top: -15px;
 }
 
-.ai-input {
-  border-radius: 15px;
-  min-height: 46px;
-  max-height: 150px;
-  height: 46px;
-  width: 50%;
-  border: none;
-  padding: 10px 15px;
-  transition: 0.8s;
-  font-size: 17px;
-}
-.ai-input:focus {
-  outline: none;
-  box-shadow: 0 0 40px rgba(127, 187, 251, 0.673);
-  transition: 0.5s;
-}
 
 .separationWaveContainer {
   margin-top: -20px;
