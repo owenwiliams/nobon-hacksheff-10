@@ -48,8 +48,6 @@ async def read_active_journeys(db: Session = Depends(get_db)):
     journeys = get_active_journeys(db)
     return [JourneyRead.model_validate(journey) for journey in journeys]
 
-
-
 # update
 @router.put("/{entry_id}", response_model=JourneyRead)
 async def update_existing_journey(entry_id: int, entry_in: JourneyUpdate, db: Session = Depends(get_db)):
