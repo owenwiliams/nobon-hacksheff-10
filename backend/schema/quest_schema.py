@@ -6,7 +6,7 @@ class QuestBase(BaseModel):
     title: str
     start_date: date
     due_date: date
-    end_date: date
+    end_date: Optional[date] = None
 
 class QuestCreate(QuestBase):
     journey_id: int

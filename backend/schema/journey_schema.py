@@ -5,7 +5,7 @@ from pydantic import BaseModel
 class JourneyBase(BaseModel):
     title: str
     start_date: date
-    end_date: date
+    end_date: Optional[date] = None
 
 class JourneyCreate(JourneyBase):
     pass

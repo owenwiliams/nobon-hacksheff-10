@@ -8,7 +8,7 @@ class Journey(Base):
     id = Column(Integer, primary_key=True, index=True, autoincrement=True)
     title = Column(String, index=True)
     start_date = Column(Date, index=True)
-    end_date = Column(Date, index=True)
+    end_date = Column(Date, index=True, nullable=True)
 
     quests = relationship("Quest", back_populates="journey")
 
@@ -19,7 +19,7 @@ class Quest(Base):
     title = Column(String, index=True)
     start_date = Column(Date, index=True)
     due_date = Column(Date, index=True)
-    end_date = Column(Date, index=True)
+    end_date = Column(Date, index=True, nullable=True)
 
     tasks = relationship("Task", back_populates="quest")
 
