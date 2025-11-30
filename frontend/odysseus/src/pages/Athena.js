@@ -7,9 +7,9 @@ import Typography from '@mui/material/Typography';
 import CircularProgress from '@mui/material/CircularProgress';
 import { athenaChat } from '../services/geminiApi';
 import '../styles/Title.css';
+import { useLocation } from 'react-router-dom'; // ← ADDED: Import useLocation
 
-function AthenaTitle()
-{
+function AthenaTitle() {
   return (
     <div>
         <div class="titleContainer">
@@ -21,12 +21,57 @@ function AthenaTitle()
 }
 
 function Athena() {
+  const location = useLocation();
   const [messages, setMessages] = useState([
     { id: 1, sender: 'ai', text: 'Hello, I am Athena. I am here to help you along your Odyssey... What do you need help with?' }
   ]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef(null);
+  const hasProcessedInitialMessage = useRef(false); // ← ADD THIS LINE
+
+  // ADDED: Effect to handle initial message from home page
+  useEffect(() => {
+    if (location.state?.initialMessage && !hasProcessedInitialMessage.current) {
+      hasProcessedInitialMessage.current = true; // ← PREVENT DUPLICATES
+      handleSendInitialMessage(location.state.initialMessage);
+    }
+  }, [location.state?.initialMessage]); // ← FIXED DEPENDENCY
+
+  // ADDED: Function to handle initial message from home page
+  const handleSendInitialMessage = async (initialMessage) => {
+    // Add user message
+    const userMessage = {
+      id: messages.length + 1,
+      sender: 'user',
+      text: initialMessage,
+    };
+    setMessages((prev) => [...prev, userMessage]);
+    setLoading(true);
+
+    try {
+      // Call the AI endpoint
+      const aiResponse = await athenaChat({ prompt: initialMessage });
+      
+      // Add AI response
+      const aiMessage = {
+        id: messages.length + 2,
+        sender: 'ai',
+        text: aiResponse,
+      };
+      setMessages((prev) => [...prev, aiMessage]);
+    } catch (error) {
+      console.error('Error calling Athena:', error);
+      const errorMessage = {
+        id: messages.length + 2,
+        sender: 'ai',
+        text: 'Sorry, something went wrong. Please try again.',
+      };
+      setMessages((prev) => [...prev, errorMessage]);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   // Auto-scroll to bottom when new messages arrive
   const scrollToBottom = () => {
