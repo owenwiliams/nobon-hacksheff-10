@@ -12,10 +12,10 @@ Our biggest challenge came with attempting to force progress with an approach th
 
 
 
-to run:
-cd to backend folder
-fastapi dev main.py
+## to run:
+`cd` to backend folder
+then run `fastapi dev main.py`
 
-cd to frontend-react
-npm install
-npm start
+then `cd` to "frontend-react"
+then run `npm install`
+and `npm start`
