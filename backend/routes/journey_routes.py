@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
 from schema.journey_schema import JourneyCreate, JourneyRead, JourneyUpdate
+from schema.quest_schema import QuestRead
 from db import get_db
 from crud.journey_crud import create_journey, get_journey, get_all_journeys, update_journey, delete_journey
+from crud.quest_crud import get_quests_by_journey
 from sqlalchemy.orm import Session
 
 router = APIRouter(prefix="/journey", tags=["journey"])
@@ -26,6 +28,12 @@ async def read_journey(entry_id: int, db: Session = Depends(get_db)):
 async def read_all_journeys(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     entries = get_all_journeys(db, skip=skip, limit=limit)
     return [JourneyRead.model_validate(entry) for entry in entries]
+
+# read quests by journey id
+@router.get("/quests/{journey_id}", response_model=List[QuestRead])
+async def read_quests_by_journey(journey_id: int, db: Session = Depends(get_db)):
+    quests = get_quests_by_journey(db, journey_id)
+    return [QuestRead.model_validate(quest) for quest in quests]
 
 # update
 @router.put("/{entry_id}", response_model=JourneyRead)

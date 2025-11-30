@@ -16,6 +16,9 @@ def get_quest(db: Session, quest_id: int) -> Optional[Quest]:
 def get_all_quests(db: Session, skip: int = 0, limit: int = 100) -> List[Quest]:
     return db.query(Quest).offset(skip).limit(limit).all()
 
+def get_quests_by_journey(db: Session, journey_id: int) -> List[Quest]:
+    return db.query(Quest).filter(Quest.journey_id == journey_id).all()
+
 def update_quest(db: Session, quest_id: int, quest_in: QuestUpdate) -> Optional[Quest]:
     db_quest = db.query(Quest).filter(Quest.id == quest_id).first()
     if db_quest is None:

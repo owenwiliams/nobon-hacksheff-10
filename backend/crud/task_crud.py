@@ -16,6 +16,9 @@ def get_task(db: Session, task_id: int) -> Optional[Task]:
 def get_all_tasks(db: Session, skip: int = 0, limit: int = 100) -> List[Task]:
     return db.query(Task).offset(skip).limit(limit).all()
 
+def get_tasks_by_quest(db: Session, quest_id: int) -> List[Task]:
+    return db.query(Task).filter(Task.quest_id == quest_id).all()
+
 def update_task(db: Session, task_id: int, task_in: TaskUpdate) -> Optional[Task]:
     db_task = db.query(Task).filter(Task.id == task_id).first()
     if db_task is None:

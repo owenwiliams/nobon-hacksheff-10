@@ -1,8 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from typing import List
 from schema.quest_schema import QuestCreate, QuestRead, QuestUpdate
+from schema.task_schema import TaskRead
 from db import get_db
 from crud.quest_crud import create_quest, get_quest, get_all_quests, update_quest, delete_quest
+from crud.task_crud import get_tasks_by_quest
 from sqlalchemy.orm import Session
     
 router = APIRouter(prefix="/quests", tags=["quests"])
@@ -26,6 +28,12 @@ async def read_quest(quest_id: int, db: Session = Depends(get_db)):
 async def read_all_quests(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     quests = get_all_quests(db, skip=skip, limit=limit)
     return [QuestRead.model_validate(quest) for quest in quests]
+
+# read tasks by quest id
+@router.get("/tasks/{quest_id}", response_model=List[TaskRead])
+async def read_tasks_by_quest(quest_id: int, db: Session = Depends(get_db)):
+    tasks = get_tasks_by_quest(db, quest_id)
+    return [TaskRead.model_validate(task) for task in tasks]
 
 # update
 @router.put("/{quest_id}", response_model=QuestRead)
