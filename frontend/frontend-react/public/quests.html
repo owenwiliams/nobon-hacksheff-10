@@ -7,9 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="/index.css">
-    <link rel="stylesheet" href="/athena.css">
+    <link rel="stylesheet" href="/quests.css">
     <link rel="manifest" href="/public/manifest.json">
-    <title>Odysseus</title>
+    <title>Quests on Odysseus</title>
 </head>
 
 <body>
@@ -27,25 +27,20 @@
             <button class="openbtn" onclick="toggleNav()">&#9776; </button>
         </div>
 
-        <div class="welcomeContainer">
-            <div id="greetingDiv"></div>
-            <p class="greetingName">ODYSSEUS</p>
-            <br>
-            <textarea id="userInput" name="userInput" class="userInput" style="background-color: white;" placeholder="Talk with Athena"></textarea>
+        <div class="journeyContainer">
+
+            <div class="journeyBody">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-text">
+                        <input class="form-check-input mt-0" type="checkbox" value="" aria-label="Checkbox for following text input">
+                    </div>
+                    <input type="text" class="form-control" aria-label="Text input with checkbox">
+                </div>
+                
+            </div>
+
         </div>
-
-        <div class = "separationWaveContainer">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 200">
-                <path
-                fill="#1f2484"
-                fill-opacity="1"
-                d="M0,192L60,208C120,224,240,256,360,261.3C480,267,600,245,720,208C840,171,960,117,1080,106.7C1200,96,1320,128,1380,144L1440,160L1440,0L1380,0C1320,0,1200,0,1080,0C960,0,840,0,720,0C600,0,480,0,360,0C240,0,120,0,60,0L0,0Z"
-                transform="scale(1, 0.4)"></path>
-            </svg>
-        </div>
-
-        <div class="widgetContainer" id="widgetContainer"></div>
-
     </div>
 
 
