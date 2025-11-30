@@ -3,7 +3,7 @@ from typing import List
 from schema.quest_schema import QuestCreate, QuestRead, QuestUpdate
 from schema.task_schema import TaskRead
 from db import get_db
-from crud.quest_crud import create_quest, get_quest, get_all_quests, update_quest, delete_quest
+from crud.quest_crud import create_quest, get_quest, get_all_quests, update_quest, delete_quest, get_active_quests, get_quests_by_end_date
 from crud.task_crud import get_tasks_by_quest
 from sqlalchemy.orm import Session
     
@@ -27,6 +27,18 @@ async def read_quest(quest_id: int, db: Session = Depends(get_db)):
 @router.get("/", response_model=List[QuestRead])
 async def read_all_quests(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     quests = get_all_quests(db, skip=skip, limit=limit)
+    return [QuestRead.model_validate(quest) for quest in quests]
+
+# read quests by end date
+@router.get("/by-end-date/{end_date}", response_model=List[QuestRead])
+async def read_quests_by_end_date(end_date: date, db: Session = Depends(get_db)):
+    quests = get_quests_by_end_date(db, end_date)
+    return [QuestRead.model_validate(quest) for quest in quests]
+
+# read active quests (no end date)
+@router.get("/active", response_model=List[QuestRead])
+async def read_active_quests(db: Session = Depends(get_db)):
+    quests = get_active_quests(db)
     return [QuestRead.model_validate(quest) for quest in quests]
 
 # read tasks by quest id
