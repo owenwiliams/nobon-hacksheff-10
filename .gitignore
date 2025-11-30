@@ -4,4 +4,3 @@ backend/test.db
 .env
 *env
 backend/env
-backend/env
