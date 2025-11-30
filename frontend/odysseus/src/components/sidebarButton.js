@@ -1,5 +1,5 @@
 import React from 'react';
-import '../sidebar.css';
+import '../styles/Sidebar.css';
 
 
 // Make sure it accepts the prop (we called it toggleNav in App.jsx)

@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'Greek Dalek';
-  src: url(../public/DalekPinpointBold.woff) format('woff');
+  src: url(../../public/DalekPinpointBold.woff) format('woff');
 }
 
 .welcomeContainer {
@@ -34,7 +34,3 @@
   margin-top: -20px;
 }
 
-.widgetContainer {
-  background-color: #ffffff;
-  height: 500px;
-}

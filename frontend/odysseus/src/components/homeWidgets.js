@@ -1,3 +1,8 @@
+import React, { useState } from "react";
+import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
+
 function WidgetCardStreak(props) {
   const { streakValue, iconPath } = props;
 
@@ -37,7 +42,8 @@ function WidgetCardStreak(props) {
   };
 
   const divStyle = {
-    marginLeft: '-50px',
+    marginLeft: '-80px',
+    marginRight: '80px',
   };
 
   return (
@@ -70,7 +76,7 @@ const ICON_PATHS = {
   LARGE: 'images/streakiconHigh.png',
 };
 
-function StreakWidget() {
+function StreakCounter() {
   // Use useState to manage the streak number. Start it at 42.
   const [streak, setStreak] = useState(0); 
 
@@ -143,6 +149,16 @@ function WidgetCardCalendar() {
   );
 }
 
+function CustomCalendar() {
+    return (
+      <div>
+        <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <DateCalendar />
+        </LocalizationProvider>
+      </div>
+    );
+}
+
 function CardLayout() {
   const layoutStyle = {
     display: 'flex',
@@ -153,8 +169,12 @@ function CardLayout() {
 
 return (
     <div style={layoutStyle}>
-      <StreakWidget /> 
-      <WidgetCardCalendar /> 
+      <StreakCounter /> 
+      <CustomCalendar /> 
     </div>
   );
+}
+
+export default function DisplayWidgets() {
+  return <CardLayout />;
 }

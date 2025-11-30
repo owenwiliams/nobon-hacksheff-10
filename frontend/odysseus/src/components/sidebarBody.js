@@ -1,5 +1,5 @@
 import React from 'react';
-import '../sidebar.css';
+import '../styles/Sidebar.css';
 
 // Component receives the state and width from the parent App
 function SidebarContent({ isOpen, sidebarWidth }) {
