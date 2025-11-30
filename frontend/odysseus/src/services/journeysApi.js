@@ -14,7 +14,7 @@ export const getJourney = async (id) => {
 
 export const getQuestsByJourney = async (journeyId) => {
   try {
-    const res = await axios.get(`${BASE_URL}/quests/${journeyId}`);
+    const res = await axios.get(`${BASE_URL}/journey/quests/${journeyId}`);
     return res.data;
   } catch (err) {
     console.error("Error fetching quests:", err);
@@ -24,7 +24,7 @@ export const getQuestsByJourney = async (journeyId) => {
 
 export const getJourneysByEndDate = async (endDate) => {
   try {
-    const res = await axios.get(`${BASE_URL}/by-end-date/${endDate}`);
+    const res = await axios.get(`${BASE_URL}/journey/by-end-date/${endDate}`);
     return res.data;
   } catch (err) {
     console.error("Error fetching journeys by end date:", err);
@@ -34,7 +34,7 @@ export const getJourneysByEndDate = async (endDate) => {
 
 export const getActiveJourneys = async () => {
   try {
-    const res = await axios.get(`${BASE_URL}/active`);
+    const res = await axios.get(`${BASE_URL}/journey/active`);
     return res.data;
   } catch (err) {
     console.error("Error fetching active journeys:", err);

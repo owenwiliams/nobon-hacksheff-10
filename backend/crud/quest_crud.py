@@ -2,7 +2,7 @@ from typing import List, Optional
 from datetime import date
 from sqlalchemy.orm import Session
 from models import Quest
-from schema import quest_schema as schema
+from schema.quest_schema import QuestCreate, QuestUpdate
 
 def create_quest(db: Session, quest_in: QuestCreate) -> Quest:
     db_quest = Quest(**quest_in.model_dump())
