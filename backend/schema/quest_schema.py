@@ -5,7 +5,7 @@ from pydantic import BaseModel
 class QuestBase(BaseModel):
     title: str
     start_date: date
-    due_date: date
+    due_date: Optional[date] = None
     end_date: Optional[date] = None
 
 class QuestCreate(QuestBase):

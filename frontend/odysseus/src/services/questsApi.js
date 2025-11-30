@@ -34,7 +34,7 @@ export const getActiveQuests = async () => {
 
 export const getTasksByQuest = async (questId) => {
   try {
-    const res = await axios.get(`${BASE_URL}/tasks/${questId}`);
+    const res = await axios.get(`${BASE_URL}/quests/tasks/${questId}`);
     return res.data;
   } catch (err) {
     console.error("Error fetching tasks:", err);
