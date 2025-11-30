@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Greek Dalek';
+  src: url(../public/DalekPinpointBold.woff) format('woff');
+}
+
+.welcomeContainer {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(31, 36, 132);
+  height: 500px;
+  margin-top:-80px;
+}
+
+.greetingText {
+  font-size: 45px;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  letter-spacing: 3px;
+  color: white;
+}
+
+.greetingName {
+  font-family: 'Greek Dalek';
+  color: white;
+  font-size: 50px;
+  margin-top: -15px;
+}
+
+
+.separationWaveContainer {
+  margin-top: -20px;
+}
+
+.widgetContainer {
+  background-color: #ffffff;
+  height: 500px;
+}
