@@ -1,0 +1,24 @@
+.titleContainer {
+    flex: 0 0 auto;
+    height: 110px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Greek Dalek';
+    font-size: 50px;
+    color: white;
+    background-color: rgb(31, 36, 132);
+    margin-top: -77px;
+}
+
+.titleBanner {
+    background-image: url('../../public/images/tileablePattern.png');
+    height: 30px;
+    width: 100%;
+    background-repeat: repeat-x;
+    background-size: auto 100%;
+    color:blue;
+    margin-top: -18px;
+}

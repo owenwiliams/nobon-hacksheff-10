@@ -1,10 +1,22 @@
 import React from 'react';
+import '../styles/Title.css';
+
+function AthenaTitle()
+{
+  return (
+    <div>
+        <div class="titleContainer">
+            <p class="athenaTitle">ATHENA</p>
+        </div>
+        <div class = "titleBanner"></div>
+    </div>
+  );
+}
 
 function Athena() {
   return (
     <div>
-      <h1>Athena Chatbot</h1>
-      <p>Talk to athena...</p>
+      <AthenaTitle />
     </div>
   );
 }
