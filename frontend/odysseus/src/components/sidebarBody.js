@@ -1,10 +1,15 @@
 import React from 'react';
 import '../styles/Sidebar.css';
+import { BrowserRouter, Link } from 'react-router-dom';
 
 // Component receives the state and width from the parent App
 function SidebarContent({ isOpen, sidebarWidth }) {
+
+
+  
+
   return (
-    <div 
+    <nav 
       id="mySidebar" 
       className="sidebar"
       style={{
@@ -13,12 +18,28 @@ function SidebarContent({ isOpen, sidebarWidth }) {
         transition: 'width 0.5s', // Smooth transition effect
       }}
     >
-      <a href="#">Home</a>
-      <a href="#">Athena</a>
-      <a href="#">Quests</a>
-      <a href="#">Odyssey</a>
-      <a href="#">Journal</a>
-    </div>
+
+        <Link to="/" className="nav-item">
+          Home
+        </Link>
+
+        <Link to="/athena" className="nav-item">
+          Athena
+        </Link>
+      
+        <Link to="/journeys" className="nav-item">
+          Journeys
+        </Link>
+            
+        <Link to="/odyssey" className="nav-item">
+          Odyssey
+        </Link>
+            
+        <Link to="/journal" className="nav-item">
+          Journal
+        </Link>
+      
+    </nav>
   );
 }
 
