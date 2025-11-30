@@ -1,5 +1,5 @@
 import './App.css';
-import Calendar from './components/calendar';
+import CustomCalendar from './components/CustomCalendar';
 
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
         <h1>Odysseus Frontend</h1>
 
         <h2>Calendar</h2>
-        <Calendar />
+        <CustomCalendar />
     </div>
   );
 }

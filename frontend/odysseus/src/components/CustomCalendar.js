@@ -2,7 +2,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { DateCalendar } from '@mui/x-date-pickers/DateCalendar';
 
-function Calendar() {
+function CustomCalendar() {
     return (
         <LocalizationProvider dateAdapter={AdapterDayjs}>
             <DateCalendar />
@@ -10,4 +10,4 @@ function Calendar() {
     );
 }
 
-export default Calendar;
+export default CustomCalendar;
